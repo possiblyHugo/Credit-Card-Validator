@@ -17,7 +17,6 @@ int charToInt(char digit) {
 }
 
 bool ValidateCard(std::string cardNumber) {
-	
 	int oddDigits, evenDigits, numsGreaterThan4, total;
 	oddDigits = evenDigits = numsGreaterThan4 = total = 0;
 
@@ -40,14 +39,16 @@ bool ValidateCard(std::string cardNumber) {
 	else {
 		return false;
 	}
-	
 }
 
 int main() {
 	std::string creditCard;
 	
 	std::cout << "Input your credit card number: ";
-	std::cin >> creditCard;
+	getline(std::cin, creditCard);
+
+	// Remove whitespace
+	creditCard.erase(std::remove(creditCard.begin(), creditCard.end(), ' '), creditCard.end());
 
 	// Make sure the credit card is the right length
 	if (creditCard.length() != 16) {
@@ -61,7 +62,6 @@ int main() {
 	}
 
 	bool result = ValidateCard(creditCard);
-
 	if (result) {
 		std::cout << "Valid credit card number.";
 	}
